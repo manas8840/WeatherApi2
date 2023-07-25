@@ -66,16 +66,31 @@
     li {
       margin-bottom: 5px;
     }
+    img{
+      width: 300px;;
+    }
   </style>
 </head>
 <body>
-  <h1>API Example</h1>
+  <img id="img"/>
+  <h1>Weather API</h1>
   
+  
+  <input id="cityname" value="cairo" type="text"> 
   <button onclick="getInfo()">Get Info</button>
   <div id="info"></div>
   <script>
     function getInfo() {
-      fetch('https://api.openweathermap.org/data/2.5/weather?q=varanasi&appid=4a1f8a61b74546825af1e0be106e797b&units=metric')
+      {
+        document.getElementById("img").src="https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png";
+      const infoDiv = document.getElementById('info');
+    
+      infoDiv.innerHTML = ``;
+    }
+      let cityname=document.getElementById("cityname").value;
+      let url=`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=4a1f8a61b74546825af1e0be106e797b&units=metric`;
+      console.log(url);
+      fetch(url)
         .then(response => {
           if (response.ok) {
             return response.json();
@@ -85,6 +100,11 @@
         })
         .then(data => {
           const infoDiv = document.getElementById('info');
+          // https://openweathermap.org/img/w/${widget.currenticon}.png"
+          let icon=data.weather[0].icon;
+          let imgppath=`https://openweathermap.org/img/w/${icon}.png`;
+          console.log(imgppath);
+          document.getElementById("img").src=imgppath;
           infoDiv.innerHTML = `   
             <h2>${data.name}</h2> 
             <ul>      
@@ -97,7 +117,9 @@
               <li>Pressure: ${data.main.pressure}</li>
               <li>Humidity: ${data.main.humidity}</li>
               <li>visibility: ${data.visibility}</li>
-            </ul>
+              
+              </ul>
+              
           `;    
         })    
         .catch(error => {
@@ -105,5 +127,6 @@
         });
     }
   </script>
+  
 </body>
 </html>
