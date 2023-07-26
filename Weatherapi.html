@@ -76,13 +76,13 @@
   <h1>Weather API</h1>
   
   
-  <input id="cityname" value="cairo" type="text"> 
+  <input id="cityname"  type="text"> 
   <button onclick="getInfo()">Get Info</button>
   <div id="info"></div>
   <script>
     function getInfo() {
       {
-        document.getElementById("img").src="https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png";
+        document.getElementById("img").src="https://ak6.picdn.net/shutterstock/videos/1009152956/thumb/9.jpg?ip=x480";
       const infoDiv = document.getElementById('info');
     
       infoDiv.innerHTML = ``;
@@ -94,7 +94,7 @@
         .then(response => {
           if (response.ok) {
             return response.json();
-          } else {
+           } else {
             throw new Error('Network response was not ok.');
           }
         })
