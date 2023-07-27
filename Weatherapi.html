@@ -98,7 +98,7 @@
             throw new Error('Network response was not ok.');
           }
         })
-        .then(data => {
+        .then(data => { 
           const infoDiv = document.getElementById('info');
           // https://openweathermap.org/img/w/${widget.currenticon}.png"
           let icon=data.weather[0].icon;
